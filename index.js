@@ -1,14 +1,18 @@
-const inquirer = require('inquirer');
-const { writeFile } = require('fs').promises;
+const {Circle, Triangle, Square} = require('./lib/shapes.js');
+// const shapes = new SVGImageElement();
+const inquirer = require("inquirer")
+const svg = require('./svg')
+const { writeFile } = require('fs/promises')
+// make questions, then prompt questions. Make corresponding constructors save results.(fs package)
 const questions = [{
     name: "text",
     type: "input",
-    message: "Create a title",
+    message: "Insert text",
 },
 {
     name: "textcolor",
     type: "input",
-    message: "Create a title",
+    message: "What color text?",
 },
 {
     name: "shape",
@@ -19,14 +23,13 @@ const questions = [{
 {
     name: "shapecolor",
     type: "input",
-    message: "Create a title",
+    message: "Choose color for your shape",
 }
 ]
-const generateSVG = ({ text, textcolor, shape, shapecolor }) =>
-
 function init() {
     inquirer.prompt(questions) // this should run the inquirer prompt.
-      .then((answers) => writeFile("index.html", generateSVG(answers)))
+      .then((answers) => writeFile('logo.svg', svg.render()))
       .then(() => console.log('Successfully wrote'))
       .catch((err) => console.error(err));
   }
+init()
