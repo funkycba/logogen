@@ -33,10 +33,13 @@ function init() {
         switch(shape){
             case "circle": 
             userShape = new Circle();
+            break;
             case "square":
             userShape = new Square();
+            break;
             case "triangle":
             userShape = new Triangle();
+            break;
         }
         userShape.setColor(shapecolor);
         const svg = new SVG();
